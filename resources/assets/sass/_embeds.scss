@@ -1,0 +1,12 @@
+.embed-YouTube,
+.embed-Vimeo
+{
+  margin-bottom: $grid-gutter-width / 2;
+  @extend .embed-responsive;
+  @extend .embed-responsive-16by9;
+
+  iframe
+  {
+    @extend .embed-responsive-item;
+  }
+}
