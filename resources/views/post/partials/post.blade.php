@@ -19,6 +19,12 @@
                 {!! $post->html !!}
             </div>
             @endif
+
+            @if( $place = $post->place)
+                <div class="panel-footer">
+                    {!! $place->name !!}
+                </div>
+            @endif
         </div>
     </div>
 </div>

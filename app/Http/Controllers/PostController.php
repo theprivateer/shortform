@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePost;
+use App\Place;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -41,6 +42,24 @@ class PostController extends Controller
             {
                 $post->images()->attach($image);
             }
+        } catch (\Exception $e) { }
+
+        // Place
+        try
+        {
+            $p = json_decode($request->get('raw_place'));
+
+            $place = Place::firstOrCreate([
+                'object_id' => $p->hit->objectID,
+                'name'      => $p->name,
+                'type'      => $p->type,
+                'value'     => $p->value,
+                'latitude'  => $p->latlng->lat,
+                'longitude' => $p->latlng->lng,
+            ]);
+
+            $place->posts()->save($post);
+
         } catch (\Exception $e) { }
 
         return redirect()->route('home');

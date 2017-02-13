@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Post something...</div>
+                {{--<div class="panel-heading">Post something...</div>--}}
 
                 <form role="form" method="POST" action="{{ route('post.create') }}" id="postForm">
                     {{ csrf_field() }}
@@ -21,12 +21,27 @@
                             <div class="form-group{{ $errors->has('markdown') ? ' has-error' : '' }}">
                                 <label for="markdown" class="control-label sr-only">Markdown:</label>
 
-                                <textarea id="markdown" class="form-control" name="markdown" rows="10">{{ old('markdown') }}</textarea>
+                                <textarea id="markdown" class="form-control" name="markdown" rows="10" placeholder="Post something...">{{ old('markdown') }}</textarea>
 
                                 @if ($errors->has('markdown'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('markdown') }}</strong>
                             </span>
+                                @endif
+                            </div>
+
+                            <!-- Location Form Input -->
+                            <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                                <label for="location" class="control-label sr-only">Location:</label>
+
+                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" placeholder="Where are you?">
+
+                                <input type="hidden" name="raw_place" value="{{ old('raw_place') }}">
+
+                                @if ($errors->has('location'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('location') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -71,6 +86,16 @@
     <script src="/js/jquery.textcomplete.min.js"></script>
     <!-- Algolia Search API Client - latest version -->
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+    <script>
+        var placesAutocomplete = places({
+            container: document.querySelector('#location')
+        });
+
+        placesAutocomplete.on('change', e => $('[name="raw_place"]').val(JSON.stringify(e.suggestion)));
+
+    </script>
 
     <script>
         var imageArray = [];

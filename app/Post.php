@@ -70,6 +70,11 @@ class Post extends Model
         return $this->images->first();
     }
 
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
+
     public static function getTagClassName(): string
     {
         return Tag::class;
