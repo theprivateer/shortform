@@ -8342,3 +8342,29 @@ button.close {
 .embed-Vimeo {
   margin-bottom: 15px;
 }
+
+.dropdown-menu .textcomplete-item a,
+.dropdown-menu .textcomplete-item a:hover {
+  cursor: pointer;
+  font-weight: normal;
+  color: #000;
+  position: relative;
+  padding: 3px 10px;
+}
+
+.dropdown-menu .textcomplete-item.active a {
+  background: #F0F0F0;
+}
+
+/* Highlighting of the matching part
+   of each search result */
+
+.dropdown-menu .textcomplete-item a em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.dropdown-menu .textcomplete-footer {
+  border-top: solid 1px #F0F0F0;
+  margin-top: 3px;
+}

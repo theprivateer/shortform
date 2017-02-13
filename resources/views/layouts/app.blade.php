@@ -89,7 +89,7 @@
 
         <footer>
             <div class="container">
-                <p class="text-center">Powered by ShortForm</p>
+                <p class="text-center">Powered by <a href="https://github.com/theprivateer/shortform" target="_blank">ShortForm</a></p>
             </div>
         </footer>
     </div>

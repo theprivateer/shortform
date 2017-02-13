@@ -69,4 +69,9 @@ class Post extends Model
     {
         return $this->images->first();
     }
+
+    public static function getTagClassName(): string
+    {
+        return Tag::class;
+    }
 }
