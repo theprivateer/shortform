@@ -22,7 +22,7 @@
 
             @if( $place = $post->place)
                 <div class="panel-footer">
-                    {!! $place->name !!}
+                    <a href="{{ route('place.index', $place->id) }}">{!! $place->name !!}</a>
                 </div>
             @endif
         </div>

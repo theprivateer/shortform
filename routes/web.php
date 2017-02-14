@@ -29,6 +29,11 @@ Route::get('tag/{tag}', [
     'as'    => 'tag.index'
 ]);
 
+Route::get('place/{id}', [
+    'uses'  => 'PlaceController@index',
+    'as'    => 'place.index'
+]);
+
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('home', [

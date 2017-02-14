@@ -12,4 +12,9 @@ class Place extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function secondaryInfo()
+    {
+        return trim( str_replace($this->name . ',', '', $this->value) );
+    }
 }
