@@ -29,6 +29,21 @@
                             </span>
                             @endif
                         </div>
+
+                        <!-- Location Form Input -->
+                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                            <label for="location" class="control-label sr-only">Location:</label>
+
+                            <input id="location" type="text" class="form-control" name="location" value="{{ old('location', ($post->place) ? $post->place->value : null) }}" placeholder="Where are you?">
+
+                            <input type="hidden" name="raw_place" value="{{ old('raw_place', ($post->place) ? $post->place->raw() : null) }}">
+
+                            @if ($errors->has('location'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('location') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="panel-footer">
@@ -71,6 +86,16 @@
     <script src="/js/jquery.textcomplete.min.js"></script>
     <!-- Algolia Search API Client - latest version -->
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+    <script>
+        var placesAutocomplete = places({
+            container: document.querySelector('#location')
+        });
+
+        placesAutocomplete.on('change', e => $('[name="raw_place"]').val(JSON.stringify(e.suggestion)));
+
+    </script>
 
     <script>
         $(document).on('submit', '[role="delete-form"]', function (e) {

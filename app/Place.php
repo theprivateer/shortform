@@ -17,4 +17,21 @@ class Place extends Model
     {
         return trim( str_replace($this->name . ',', '', $this->value) );
     }
+
+    public function raw()
+    {
+        return json_encode([
+            'hit'   => [
+                'objectID'  => $this->object_id
+                ],
+            'name'          => $this->name,
+            'type'          => $this->type,
+            'value'         => $this->value,
+            'latlng'        => [
+                'lat'       => $this->latitude,
+                'lng'       => $this->longitude
+            ]
+        ]
+        );
+    }
 }

@@ -37,7 +37,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}" title="{{ config('app.name', 'Laravel') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -89,7 +89,7 @@
 
         <footer>
             <div class="container">
-                <p class="text-center">Powered by <a href="https://github.com/theprivateer/shortform" target="_blank">ShortForm</a></p>
+                <p class="text-center">Powered by <a href="https://github.com/theprivateer/shortform" target="_blank" class="shortform-credit">ShortForm</a></p>
             </div>
         </footer>
     </div>

@@ -80,6 +80,24 @@ class PostController extends Controller
 
         $post->save();
 
+        // Place
+        try
+        {
+            $p = json_decode($request->get('raw_place'));
+
+            $place = Place::firstOrCreate([
+                'object_id' => $p->hit->objectID,
+                'name'      => $p->name,
+                'type'      => $p->type,
+                'value'     => $p->value,
+                'latitude'  => $p->latlng->lat,
+                'longitude' => $p->latlng->lng,
+            ]);
+
+            $place->posts()->save($post);
+
+        } catch (\Exception $e) { }
+
         return redirect()->route('post.show', $uuid);
     }
 

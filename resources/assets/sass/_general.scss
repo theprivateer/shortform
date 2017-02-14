@@ -1,0 +1,18 @@
+.navbar-brand
+{
+  width: 50px;
+  background: url('/img/header-logo.png') no-repeat 50% 50%;
+  background-size: 40px auto;
+  @include text-hide;
+}
+
+.shortform-credit
+{
+  display: block;
+  margin: 10px auto;
+  width: 150px;
+  height: 138px;
+  background: url('/img/footer-logo.png') no-repeat 50% 50%;
+  background-size: 150px auto;
+  @include text-hide;
+}
