@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Image::class);
     }
+
+    public function avatar()
+    {
+        return $this->belongsTo(Image::class);
+    }
 }

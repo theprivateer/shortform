@@ -33,6 +33,17 @@ class UserController extends Controller
 
         Auth::user()->fill($data);
 
+        // Attach images here...
+        try
+        {
+            $images = json_decode($request->get('images'));
+
+            foreach($images as $image)
+            {
+                Auth::user()->avatar_id = $image;
+            }
+        } catch (\Exception $e) { }
+
         Auth::user()->save();
 
         return redirect()->back();
