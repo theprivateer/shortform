@@ -27,4 +27,6 @@ return [
             'source_prefix'     => ''
         ]
     ],
+
+    'community-url' => 'http://community.dev'
 ];

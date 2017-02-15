@@ -129,16 +129,8 @@
 </div>
 @endsection
 
-@section('head')
-    @parent
-    <link rel="stylesheet" href="/js/dropzone/dropzone.css">
-
-@endsection
-
 @section('scripts')
     @parent
-
-    <script src="/js/dropzone/dropzone.js"></script>
 
     <script>
         var imageArray = [];
