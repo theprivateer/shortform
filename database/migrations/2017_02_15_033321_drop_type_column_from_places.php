@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPlaceIdPosts extends Migration
+class DropTypeColumnFromPlaces extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddPlaceIdPosts extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-
-            $table->unsignedInteger('place_id')->default(0)->index()->after('user_id');
-
+        Schema::table('places', function (Blueprint $table) {
+            $table->dropColumn('type');
         });
     }
 
@@ -27,9 +25,8 @@ class AddPlaceIdPosts extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-
-            $table->dropColumn('place_id');
+        Schema::table('places', function (Blueprint $table) {
+            $table->string('type')->nullable()->default(null)->after('name');
         });
     }
 }

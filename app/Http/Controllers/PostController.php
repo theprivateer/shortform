@@ -52,7 +52,6 @@ class PostController extends Controller
             $place = Place::firstOrCreate([
                 'object_id' => $p->hit->objectID,
                 'name'      => $p->name,
-                'type'      => $p->type,
                 'value'     => $p->value,
                 'latitude'  => $p->latlng->lat,
                 'longitude' => $p->latlng->lng,
@@ -88,7 +87,6 @@ class PostController extends Controller
             $place = Place::firstOrCreate([
                 'object_id' => $p->hit->objectID,
                 'name'      => $p->name,
-                'type'      => $p->type,
                 'value'     => $p->value,
                 'latitude'  => $p->latlng->lat,
                 'longitude' => $p->latlng->lng,

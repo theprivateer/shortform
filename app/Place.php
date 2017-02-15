@@ -25,7 +25,6 @@ class Place extends Model
                 'objectID'  => $this->object_id
                 ],
             'name'          => $this->name,
-            'type'          => $this->type,
             'value'         => $this->value,
             'latlng'        => [
                 'lat'       => $this->latitude,
