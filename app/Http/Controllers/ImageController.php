@@ -43,6 +43,7 @@ class ImageController extends Controller
             $image->file_name = $this->store_upload($upload, config('shortform.upload-prefix') . '/' . $user->uuid . '/' . date('Ymd'));
             $image->original_name = $upload->getClientOriginalName();
             $image->mime_type = $upload->getClientMimeType();
+            $image->disk = config('filesystems.default');
 
             $user->images()->save($image);
 
