@@ -8340,6 +8340,7 @@ button.close {
 
 .navbar-brand {
   width: 50px;
+  margin-left: 15px;
   background: url("/img/header-logo.png") no-repeat 50% 50%;
   background-size: 40px auto;
   font: 0/0 a;

@@ -3,9 +3,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a href="{{ route('post.show', $post->uuid) }}">{{ $post->created_at->diffForHumans() }}</a>
-                @if(Auth::check() && Auth::user()->id == $post->user_id)
-                    <a href="{{ route('post.edit', $post->uuid) }}" class="pull-right">Edit</a>
-                @endif
+
+
+                <ul class="pull-right list-inline">
+                    @if(Auth::check() && Auth::user()->id == $post->user_id)
+                    <li>
+                        <a href="{{ route('post.edit', $post->uuid) }}">Edit</a>
+                    </li>
+                    @endif
+                </ul>
             </div>
 
             @if($image = $post->image())
@@ -21,9 +27,9 @@
             @endif
 
             @if( $place = $post->place)
-                <div class="panel-footer">
-                    <a href="{{ route('place.index', $place->id) }}">{!! $place->name !!}</a>
-                </div>
+            <div class="panel-footer">
+                <a href="{{ route('place.index', $place->id) }}"><i class="fa fa-map-marker"></i> {!! $place->name !!}</a>
+            </div>
             @endif
         </div>
     </div>

@@ -1,6 +1,7 @@
 .navbar-brand
 {
   width: 50px;
+  margin-left: $grid-gutter-width / 2;
   background: url('/img/header-logo.png') no-repeat 50% 50%;
   background-size: 40px auto;
   @include text-hide;
