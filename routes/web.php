@@ -67,15 +67,38 @@ Route::group(['middleware' => 'auth'], function()
         'as'    => 'image.create'
     ]);
 
-    Route::get('user', [
-        'uses'  => 'UserController@edit',
-        'as'    => 'user.edit'
-    ]);
+    Route::group(['namespace' => 'Users', 'prefix' => 'user'], function () {
+        Route::get('/', [
+            'uses'  => 'UserController@edit',
+            'as'    => 'user.edit'
+        ]);
 
-    Route::post('user', [
-        'uses'  => 'UserController@update',
-        'as'    => 'user.edit'
-    ]);
+        Route::get('password', [
+            'uses'  => 'PasswordController@edit',
+            'as'    => 'user.password'
+        ]);
+
+        Route::get('avatar', [
+            'uses'  => 'ImageController@edit',
+            'as'    => 'user.avatar'
+        ]);
+
+        Route::post('avatar', [
+            'uses'  => 'ImageController@update',
+            'as'    => 'user.avatar'
+        ]);
+
+        Route::post('password', [
+            'uses'  => 'PasswordController@update',
+            'as'    => 'user.password'
+        ]);
+
+        Route::post('/', [
+            'uses'  => 'UserController@update',
+            'as'    => 'user.edit'
+        ]);
+    });
+
 });
 
 /*
