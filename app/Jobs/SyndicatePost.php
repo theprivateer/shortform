@@ -40,7 +40,7 @@ class SyndicatePost implements ShouldQueue
         {
             // Syndicate!
             $data = [
-                'source'    => route('post.show', $this->post->uuid),
+                'source'    => route('post.show', [$this->post->user_id, $this->post->uuid]),
                 'uuid'      => $this->post->uuid,
                 'markdown'  => $this->post->markdown,
             ];
