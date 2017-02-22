@@ -2,14 +2,17 @@
 
 namespace App;
 
+use App\Community\Client;
+use App\Community\Token;
 use App\Images\Image;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 use Privateer\Uuid\EloquentUuid;
 
 class User extends Authenticatable
 {
-    use Notifiable, EloquentUuid;
+    use Notifiable, EloquentUuid, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -42,5 +45,15 @@ class User extends Authenticatable
     public function avatar()
     {
         return $this->belongsTo(Image::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
+
+    public function token()
+    {
+        return $this->hasOne(Token::class);
     }
 }

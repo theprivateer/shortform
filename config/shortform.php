@@ -28,5 +28,13 @@ return [
         ]
     ],
 
-    'community-url' => 'http://community.dev'
+    'presets'   => [
+        'lg'    => ['w' => 1024, 'h' => 1024, 'fit' => 'fill'],
+        'md'    => ['w' => 560, 'h' => 560, 'fit' => 'fill'],
+        'sm'    => ['w' => 200, 'h' => 200, 'fit' => 'crop'],
+    ],
+
+    'community-mode' => env('COMMUNITY_MODE', false),
+
+    'template-css'  => false,
 ];

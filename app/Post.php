@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Images\Image;
+use App\Images\JsonImage;
 use App\Parsers\HashtagParser;
 use Embera\Embera;
 use Embera\Formatter;
@@ -19,7 +20,7 @@ class Post extends Model
 {
     use EloquentUuid, HasTags, SoftDeletes;
 
-    protected $fillable = ['markdown'];
+    protected $fillable = ['uuid', 'markdown', 'source'];
 
     public static function boot()
     {
@@ -67,7 +68,9 @@ class Post extends Model
 
     public function image()
     {
-        return $this->images->first();
+        if($i = $this->images->first()) return $i;
+
+        if( ! empty($this->getAttribute('image_payload'))) return new JsonImage($this->getAttribute('image_payload'));
     }
 
     public function place()

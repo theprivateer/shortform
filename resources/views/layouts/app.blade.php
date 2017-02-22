@@ -69,6 +69,11 @@
                                     <li>
                                         <a href="{{ route('user.edit') }}">Edit Profile</a>
                                     </li>
+
+                                    <li>
+                                        <a href="{{ route('community.publishing.edit') }}">Community Settings</a>
+                                    </li>
+                                     <li class="divider"></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePost;
+use App\Jobs\SyndicatePost;
 use App\Place;
 use App\Post;
 use App\User;
@@ -20,9 +21,9 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
-    public function show($uuid)
+    public function show($user, $uuid)
     {
-        $post = Post::where('uuid', $uuid)->firstOrFail();
+        $post = Post::where('user_id', $user)->where('uuid', $uuid)->firstOrFail();
 
         return view('post.show', compact('post'));
     }
@@ -61,19 +62,21 @@ class PostController extends Controller
 
         } catch (\Exception $e) { }
 
+        dispatch(new SyndicatePost($post));
+
         return redirect()->route('home');
     }
 
-    public function edit($uuid)
+    public function edit($user, $uuid)
     {
-        $post = Post::where('uuid', $uuid)->firstOrFail();
+        $post = Post::where('user_id', $user)->where('uuid', $uuid)->firstOrFail();
 
         return view('post.edit', compact('post'));
     }
 
-    public function update(Request $request, $uuid)
+    public function update(Request $request, $user, $uuid)
     {
-        $post = Post::where('uuid', $uuid)->firstOrFail();
+        $post = Post::where('user_id', $user)->where('uuid', $uuid)->firstOrFail();
 
         $post->fill($request->all());
 
@@ -95,6 +98,8 @@ class PostController extends Controller
             $place->posts()->save($post);
 
         } catch (\Exception $e) { }
+
+        dispatch(new SyndicatePost($post));
 
         return redirect()->route('post.show', $uuid);
     }

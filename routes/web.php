@@ -20,7 +20,7 @@ Route::get('@{username}', [
    'uses'   => 'PostController@index'
 ]);
 
-Route::get('post/{uuid}', [
+Route::get('post/{user}/{uuid}', [
     'uses'   => 'PostController@show',
     'as'    => 'post.show'
 ]);
@@ -52,12 +52,12 @@ Route::group(['middleware' => 'auth'], function()
         'as'    => 'post.delete'
     ]);
 
-    Route::get('post/{uuid}/edit', [
+    Route::get('post/{user}/{uuid}/edit', [
         'uses'   => 'PostController@edit',
         'as'    => 'post.edit'
     ]);
 
-    Route::post('post/{uuid}/edit', [
+    Route::post('post/{user}/{uuid}/edit', [
         'uses'   => 'PostController@update',
         'as'    => 'post.edit'
     ]);
@@ -73,10 +73,22 @@ Route::group(['middleware' => 'auth'], function()
             'as'    => 'user.edit'
         ]);
 
+        Route::post('/', [
+            'uses'  => 'UserController@update',
+            'as'    => 'user.edit'
+        ]);
+
         Route::get('password', [
             'uses'  => 'PasswordController@edit',
             'as'    => 'user.password'
         ]);
+
+        Route::post('password', [
+            'uses'  => 'PasswordController@update',
+            'as'    => 'user.password'
+        ]);
+
+
 
         Route::get('avatar', [
             'uses'  => 'ImageController@edit',
@@ -88,14 +100,39 @@ Route::group(['middleware' => 'auth'], function()
             'as'    => 'user.avatar'
         ]);
 
-        Route::post('password', [
-            'uses'  => 'PasswordController@update',
-            'as'    => 'user.password'
+    });
+
+    Route::group(['namespace' => 'Communities', 'prefix' => 'community'], function () {
+        Route::get('publishing', [
+            'uses'  => 'PublishingController@edit',
+            'as'    => 'community.publishing.edit'
         ]);
 
-        Route::post('/', [
-            'uses'  => 'UserController@update',
-            'as'    => 'user.edit'
+        Route::post('publishing', [
+            'uses'  => 'PublishingController@update',
+            'as'    => 'community.publishing.edit'
+        ]);
+
+        Route::delete('publishing/token', [
+            'uses'  => 'PublishingController@delete',
+            'as'    => 'community.publishing.delete'
+        ]);
+
+        Route::get('redirect', [
+            'uses'  => 'PublishingController@redirect',
+            'as'    => 'community.redirect'
+        ]);
+
+        Route::get('callback', [
+            'uses'  => 'PublishingController@callback',
+            'as'    => 'community.callback'
+        ]);
+
+
+
+        Route::get('syndication', [
+            'uses'  => 'SyndicationController@edit',
+            'as'    => 'community.syndication.edit'
         ]);
     });
 

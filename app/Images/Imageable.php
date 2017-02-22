@@ -7,20 +7,22 @@ trait Imageable
 {
     public function getPath($parameters)
     {
-        if( empty($this->getFilePath())) return;
+        if( empty($this->getFilePathAttribute())) return;
+
+        if( ! is_array($parameters)) $parameters = config('shortform.presets.' . $parameters);
 
         $class = config('shortform.processors.' . config('shortform.processor') . '.class');
 
-        return (new $class)->getUrl($this->getFilePath(), $parameters);
+        return (new $class)->getUrl($this->getFilePathAttribute(), $parameters);
     }
 
     public function getTag($parameters, $attributes = [])
     {
-        if( empty($this->getFilePath())) return;
+        if( empty($this->getFilePathAttribute())) return;
 
         $tag = '<img src="' . $this->getPath($parameters) . '"';
 
-        if(empty($attributes['alt'])) $attributes['alt'] = $this->getAltText();
+        if(empty($attributes['alt'])) $attributes['alt'] = $this->getAltTextAttribute();
 
         foreach($attributes as $key => $value)
         {
@@ -32,7 +34,7 @@ trait Imageable
         return $tag;
     }
 
-    public function getFilePath()
+    public function getFilePathAttribute()
     {
         $attribute = property_exists($this, 'filePathAttribute') ? $this->filePathAttribute : 'file_name';
 
@@ -55,7 +57,7 @@ trait Imageable
 
     }
 
-    public function getAltText()
+    public function getAltTextAttribute()
     {
         $attribute = property_exists($this, 'altTextAttribute') ? $this->altTextAttribute : 'original_name';
 
