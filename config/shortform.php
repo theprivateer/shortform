@@ -36,5 +36,4 @@ return [
 
     'community-mode' => env('COMMUNITY_MODE', false),
 
-    'template-css'  => false,
 ];

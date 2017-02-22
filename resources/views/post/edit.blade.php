@@ -107,8 +107,8 @@
 
         $(function() {
             // #1 - Search configuration - To replace with your own
-            var ALGOLIA_APPID = 'EN1I47F2O7';
-            var ALGOLIA_SEARCH_APIKEY = 'a128afb78de8395665b5c5f370066bd0';
+            var ALGOLIA_APPID = '{{ env('ALGOLIA_APPLICATION_ID') }}';
+            var ALGOLIA_SEARCH_APIKEY = '{{ env('ALGOLIA_SEARCH_KEY') }}';
             var ALGOLIA_INDEX_NAME = 'tags';
             var NB_RESULTS_DISPLAYED = 5;
             // #2- Algolia API Client Initialization
