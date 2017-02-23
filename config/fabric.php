@@ -12,7 +12,7 @@ return [
 
     'site' => \Privateer\Fabric\Sites\Site::class,
 
-    'allow-null-site' => false,
+    'allow-null-site' => true,
 
     'sitemap' => '\Privateer\Fabric\Http\Controllers\SitemapController@show',
 
