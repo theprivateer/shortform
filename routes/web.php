@@ -17,7 +17,8 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('@{username}', [
-   'uses'   => 'PostController@index'
+   'uses'   => 'PostController@index',
+    'as'    => 'user.show'
 ]);
 
 Route::get('post/{user}/{uuid}', [

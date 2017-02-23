@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <h1 class="page-header"><em>#{{ $tag }}</em></h1>
             </div>
         </div>
@@ -13,7 +13,7 @@
         @endforeach
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="text-center">
                     {!! $posts->links() !!}
                 </div>

@@ -16,8 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(config('shortform.user-timelines')) return view('home.welcome');
-
         $posts = Post::latest()->simplePaginate();
 
         return view('home.index', compact('posts'));

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-default">
 
                 <form role="form" method="POST" action="{{ route('post.create') }}" id="postForm">
@@ -57,11 +57,11 @@
     </div>
 
     @foreach($posts as $post)
-        @include('post.partials.post')
+        @include('post.partials.post', ['hide_identity' => true])
     @endforeach
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="text-center">
                 {!! $posts->links() !!}
             </div>

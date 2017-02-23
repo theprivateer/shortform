@@ -53,6 +53,8 @@
                         @endif
                     </ul>
 
+                    {!! nav('main', 'nav navbar-nav') !!}
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

@@ -101,7 +101,7 @@ class PostController extends Controller
 
         dispatch(new SyndicatePost($post));
 
-        return redirect()->route('post.show', $uuid);
+        return redirect()->route('post.show', [$user, $uuid]);
     }
 
     public function delete(Request $request)
