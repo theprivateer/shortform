@@ -32,8 +32,8 @@
             </table>
 
             @if($image = $post->image())
-            <a href="{{ route('post.show', [$post->user_id, $post->uuid]) }}">
-                {!! $image->getTag('md', ['class' => 'img-responsive']) !!}
+            <a href="{{ route('post.show', [$post->user_id, $post->uuid]) }}" class="text-center">
+                {!! $image->getTag('md', ['class' => 'img-responsive center-block']) !!}
             </a>
             @endif
 

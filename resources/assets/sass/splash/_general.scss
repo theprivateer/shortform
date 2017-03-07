@@ -1,0 +1,36 @@
+.splash
+{
+  height: 100vh;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ed1e79+38,f15a24+100 */
+  background: rgb(237,30,121); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(237,30,121,1) 38%, rgba(241,90,36,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(237,30,121,1) 38%,rgba(241,90,36,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(237,30,121,1) 38%,rgba(241,90,36,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed1e79', endColorstr='#f15a24',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  .content
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    text-align: center;
+    @include translate(-50%, -50%);
+  }
+
+  .logo
+  {
+    margin: 0 0 30px;
+    background: url('/img/splash-logo.svg') no-repeat 50% 50%;
+    background-size: 250px auto;
+    width: 250px;
+    height: 231px;
+    @include text-hide;
+  }
+
+  a
+  {
+    color: inherit;
+  }
+}

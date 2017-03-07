@@ -10,6 +10,8 @@ return [
 
     'user-registration' => env('ALLOW_REGISTRATIONS', true),
 
+    'show-splash-page'  => env('SHOW_SPLASH_PAGE', true),
+
     'upload-prefix' => 'uploads',
 
     'processor' => 'glide', // 'default

@@ -16,6 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(config('shortform.show-splash-page')) return view('home.splash');
+
         $posts = Post::latest()->simplePaginate();
 
         return view('home.index', compact('posts'));
