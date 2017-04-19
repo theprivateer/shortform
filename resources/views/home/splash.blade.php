@@ -13,7 +13,7 @@
             <li><a href="{{ url('/register') }}">Register</a></li>
             @endif
             @endif
-            <li><a href="https://github.com/theprivateer/shortform">GitHub</a></li>
+            {{--<li><a href="https://github.com/theprivateer/shortform">GitHub</a></li>--}}
         </ul>
 
     </div>

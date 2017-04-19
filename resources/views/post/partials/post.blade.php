@@ -48,7 +48,7 @@
                 <div class="clearfix">
                     &nbsp;
                     @if(Auth::check() && Auth::user()->id == $post->user_id)
-                        <a href="{{ route('post.edit', [$post->user_id, $post->uuid]) }}" class="pull-right">Edit</a>
+                        <a href="{{ route('post.edit', [$post->user_id, $post->uuid]) }}" class="pull-right"><i class="fa fa-ellipsis-h fa-2x"></i></a>
                     @endif
                 </div>
             </div>
